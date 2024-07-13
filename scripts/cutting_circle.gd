@@ -1,9 +1,12 @@
 extends Node2D
 
+#@export var 
 @export var AllowedCuttingAngles = [ 1, 10 ]
 @export var AllowedVariationOnCuttingAngle = 10
 @export var NumberOfCutsToNextState = 4
-@export var NextCutScene : Resource
+
+
+
 
 signal ObjectCut()
 
