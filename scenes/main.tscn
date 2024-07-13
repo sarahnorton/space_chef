@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsdd5qxudqtia"]
+[gd_scene load_steps=2 format=3 uid="uid://bkc4ndfw4uhvu"]
 
-[ext_resource type="PackedScene" uid="uid://crm70sjns5w7v" path="res://scenes/lettuce.tscn" id="1_ajq8b"]
+[ext_resource type="PackedScene" uid="uid://cabvte76nlijl" path="res://scenes/lettuce.tscn" id="1_t20bw"]
 
-[node name="Node2D" type="Node2D"]
+[node name="main" type="Node2D"]
 
-[node name="food" parent="." instance=ExtResource("1_ajq8b")]
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="lettuce" parent="." instance=ExtResource("1_t20bw")]
+position = Vector2(-34, -7)
