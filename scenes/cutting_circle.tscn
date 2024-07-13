@@ -1,29 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1rskopmvo12w"]
+[gd_scene load_steps=3 format=3 uid="uid://b1rskopmvo12w"]
 
 [ext_resource type="Script" path="res://scripts/cutting_circle.gd" id="1_uq7pe"]
 [ext_resource type="Texture2D" uid="uid://cvhubrluxhn8j" path="res://assets/Cut Bar/cut_bar_0.png" id="2_v6dxg"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sb6yt"]
-radius = 50.0
-
-[node name="Cutting Circle" type="RigidBody2D"]
+[node name="Cutting Circle" type="Node2D"]
 position = Vector2(295, 128)
 script = ExtResource("1_uq7pe")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 5)
-scale = Vector2(2, 2)
-shape = SubResource("CircleShape2D_sb6yt")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -102.4
+offset_top = -102.4
+offset_right = 102.4
+offset_bottom = 102.4
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2, -4)
-scale = Vector2(0.8, 0.8)
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(3.2, 3.2)
 texture = ExtResource("2_v6dxg")
 
 [connection signal="mouse_entered" from="Control" to="." method="_on_control_mouse_entered"]

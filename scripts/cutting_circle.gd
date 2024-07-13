@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Node2D
 
 @export var AllowedCuttingAngles = [ 1, 10 ]
 @export var AllowedVariationOnCuttingAngle = 10
@@ -38,10 +38,10 @@ func _on_control_mouse_entered():
 
 
 func _on_control_mouse_exited():
-	if (CurrentState == State.Hovering):
-		CurrentState = State.Default
-	elif (CurrentState == State.Cutting):
+	if (CurrentState == State.Cutting):
 		FoodCut()
+	
+	CurrentState = State.Default
 	
 	return
 
@@ -49,7 +49,7 @@ func _on_control_mouse_exited():
 func FoodCut():
 	var LocalFinalCutVector = GetLocalPositionOfMouse()
 	var DirectionVectorOfCut : Vector2 = (LocalInitialCutVector - LocalFinalCutVector).normalized()
-	var CutAngle = GetAllowedAngleDirectionVector().dot(DirectionVectorOfCut)
+	var CutAngle = (180 / PI) * abs(asin(GetAllowedAngleDirectionVector().dot(DirectionVectorOfCut)))
 	print(CutAngle)
 	
 	ObjectCut.emit()

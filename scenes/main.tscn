@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bsdd5qxudqtia"]
 
-[ext_resource type="PackedScene" uid="uid://cabvte76nlijl" path="res://scenes/food.tscn" id="1_ajq8b"]
+[ext_resource type="PackedScene" uid="uid://crm70sjns5w7v" path="res://scenes/lettuce.tscn" id="1_ajq8b"]
 
 [node name="Node2D" type="Node2D"]
 
