@@ -46,6 +46,7 @@ texture = ExtResource("2_frmu4")
 [node name="Cutting Circle" parent="Spinner" instance=ExtResource("1_fkdjj")]
 position = Vector2(0, 0)
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="clicked" from="." to="." method="_on_clicked"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="CollisionShape2D" method="_on_lettuce_mouse_entered"]
