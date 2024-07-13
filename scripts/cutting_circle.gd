@@ -119,8 +119,3 @@ func GetAllowedAngleDirectionVector() -> Vector2:
 	Output.rotated(AngleOffsetOfAllowedAngle)
 	
 	return Output
-	
-
-
-
-
