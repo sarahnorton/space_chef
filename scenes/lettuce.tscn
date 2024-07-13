@@ -23,4 +23,3 @@ texture = ExtResource("2_frmu4")
 
 [node name="Cutting Circle" parent="Spinner" instance=ExtResource("1_fkdjj")]
 position = Vector2(0, 0)
-scale = Vector2(1, 1)
