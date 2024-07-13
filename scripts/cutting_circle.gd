@@ -1,7 +1,7 @@
 extends Node2D
 
 # dictionary to store different assets
-var cut_bar_versions = {
+@export var cut_bar_versions = {
 	CutState.Uncut: preload("res://assets/Cut Bar/cut_bar_0.png"),
 	CutState.FirstCut : preload("res://assets/Cut Bar/cut_bar_1.png"),
 	CutState.SecondCut : preload("res://assets/Cut Bar/cut_bar_2.png"),
@@ -78,7 +78,12 @@ func FoodCut():
 	var LocalFinalCutVector = GetLocalPositionOfMouse()
 	var DirectionVectorOfCut : Vector2 = (LocalInitialCutVector - LocalFinalCutVector).normalized()
 	var CutAngle = (180 / PI) * abs(asin(GetAllowedAngleDirectionVector().dot(DirectionVectorOfCut)))
-	#print(CutAngle)
+	
+	if (!FinalLayer()):
+		if (CutAngle > AllowedVariationOnCuttingAngle):
+			return
+			print("Failed cut")
+	
 	CurrentCutState += 1
 	
 	if (CurrentCutState == CutState.Null):

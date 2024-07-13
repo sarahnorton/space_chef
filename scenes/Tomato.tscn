@@ -1,29 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://cabvte76nlijl"]
+[gd_scene load_steps=6 format=3 uid="uid://dbp7a2wwhxj8p"]
 
-[ext_resource type="PackedScene" uid="uid://b1rskopmvo12w" path="res://scenes/cutting_circle.tscn" id="1_fkdjj"]
-[ext_resource type="Script" path="res://scripts/lettuce.gd" id="1_laj43"]
-[ext_resource type="Texture2D" uid="uid://dmbmxthbj2tie" path="res://assets/Fruits and Vegetables/Lettuce.png" id="2_frmu4"]
+[ext_resource type="Script" path="res://scripts/lettuce.gd" id="1_4xy1p"]
+[ext_resource type="PackedScene" uid="uid://b1rskopmvo12w" path="res://scenes/cutting_circle.tscn" id="2_a1pai"]
+[ext_resource type="Texture2D" uid="uid://dtwioi7vlytxi" path="res://assets/Fruits and Vegetables/Tomato.png" id="3_ah2ru"]
+[ext_resource type="Texture2D" uid="uid://jyovkqh5susv" path="res://assets/Cut Food/cut_tomato.png" id="4_4dyba"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_axfgg"]
 radius = 101.98
 
-[node name="lettuce" type="RigidBody2D" groups=["pickable"]]
+[node name="tomato" type="RigidBody2D" groups=["pickable"]]
 position = Vector2(633, 302)
 input_pickable = true
 freeze_mode = 1
-script = ExtResource("1_laj43")
+script = ExtResource("1_4xy1p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_axfgg")
 debug_color = Color(0.466667, 0.443137, 1, 0.419608)
 
-[node name="Cutting Circle" parent="." instance=ExtResource("1_fkdjj")]
+[node name="Cutting Circle" parent="." instance=ExtResource("2_a1pai")]
 position = Vector2(0, 0)
+CutIngredients = {
+0: ExtResource("3_ah2ru"),
+1: ExtResource("4_4dyba")
+}
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, -2)
 scale = Vector2(5, 5)
-texture = ExtResource("2_frmu4")
+texture = ExtResource("3_ah2ru")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="CollisionShape2D" method="_on_lettuce_mouse_entered"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkc4ndfw4uhvu"]
+[gd_scene load_steps=4 format=3 uid="uid://bkc4ndfw4uhvu"]
 
 [ext_resource type="PackedScene" uid="uid://cabvte76nlijl" path="res://scenes/lettuce.tscn" id="1_t20bw"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ykv1v"]
+[ext_resource type="PackedScene" uid="uid://dbp7a2wwhxj8p" path="res://scenes/Tomato.tscn" id="3_ireyq"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_ykv1v")
@@ -10,3 +11,6 @@ script = ExtResource("1_ykv1v")
 
 [node name="lettuce" parent="." instance=ExtResource("1_t20bw")]
 position = Vector2(-34, -7)
+
+[node name="tomato" parent="." instance=ExtResource("3_ireyq")]
+position = Vector2(-301, -160)

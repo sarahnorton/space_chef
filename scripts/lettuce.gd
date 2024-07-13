@@ -24,7 +24,7 @@ func pickup():
 func drop(impulse=Vector2.ZERO):
 	if held:
 		freeze = false
-		apply_central_impulse(impulse)
+		apply_central_impulse(impulse * 0.2)
 		held = false
 
 # Called when the node enters the scene tree for the first time.
@@ -39,3 +39,4 @@ func _process(delta):
 
 func _on_clicked():
 	pass # Replace with function body.
+
