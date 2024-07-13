@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cabvte76nlijl"]
+[gd_scene load_steps=7 format=3 uid="uid://cabvte76nlijl"]
 
 [ext_resource type="PackedScene" uid="uid://b1rskopmvo12w" path="res://scenes/cutting_circle.tscn" id="1_fkdjj"]
 [ext_resource type="Script" path="res://scenes/lettuce.gd" id="1_laj43"]
 [ext_resource type="Texture2D" uid="uid://dmbmxthbj2tie" path="res://assets/Fruits and Vegetables/Lettuce.png" id="2_frmu4"]
+[ext_resource type="Script" path="res://scenes/Spinner.gd" id="2_xai0y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_axfgg"]
 radius = 101.98
@@ -30,17 +31,21 @@ input_pickable = true
 freeze_mode = 1
 script = ExtResource("1_laj43")
 
-[node name="Cutting Circle" parent="." instance=ExtResource("1_fkdjj")]
-position = Vector2(0, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_axfgg")
+script = SubResource("GDScript_65q4o")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Spinner" type="Node2D" parent="."]
+script = ExtResource("2_xai0y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spinner"]
 position = Vector2(-1, -2)
 scale = Vector2(5.727, 5)
 texture = ExtResource("2_frmu4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_axfgg")
-script = SubResource("GDScript_65q4o")
+[node name="Cutting Circle" parent="Spinner" instance=ExtResource("1_fkdjj")]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
 
 [connection signal="clicked" from="." to="." method="_on_clicked"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
