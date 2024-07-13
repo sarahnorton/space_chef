@@ -9,4 +9,4 @@ script = ExtResource("1_ykv1v")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="lettuce" parent="." instance=ExtResource("1_t20bw")]
-position = Vector2(-34, -7)
+position = Vector2(448, 933)

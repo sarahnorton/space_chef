@@ -26,7 +26,7 @@ func _process(delta):
 "
 
 [node name="lettuce" type="RigidBody2D" groups=["pickable"]]
-position = Vector2(633, 302)
+position = Vector2(663, 1262)
 input_pickable = true
 freeze_mode = 1
 script = ExtResource("1_laj43")
