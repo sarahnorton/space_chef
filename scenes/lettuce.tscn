@@ -1,22 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://crm70sjns5w7v"]
+[gd_scene load_steps=3 format=3 uid="uid://cabvte76nlijl"]
 
 [ext_resource type="PackedScene" uid="uid://b1rskopmvo12w" path="res://scenes/cutting_circle.tscn" id="1_fkdjj"]
 [ext_resource type="Texture2D" uid="uid://dmbmxthbj2tie" path="res://assets/Fruits and Vegetables/Lettuce.png" id="2_frmu4"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_axfgg"]
-radius = 101.98
-
-[node name="lettuce" type="RigidBody2D"]
+[node name="lettuce" type="Node2D"]
 position = Vector2(633, 302)
-gravity_scale = 1.66533e-16
 
 [node name="Cutting Circle" parent="." instance=ExtResource("1_fkdjj")]
 position = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, -2)
-scale = Vector2(5, 4.365)
+scale = Vector2(5.727, 5)
 texture = ExtResource("2_frmu4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_axfgg")
