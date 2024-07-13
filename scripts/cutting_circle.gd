@@ -57,7 +57,7 @@ func _process(delta):
 	pass
 
 
-func _on_control_mouse_entered():
+func _on_lettuce_mouse_entered():
 	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)):
 		LocalInitialCutVector = GetLocalPositionOfMouse()
 		CurrentState = State.Cutting
@@ -65,7 +65,7 @@ func _on_control_mouse_entered():
 		CurrentState = State.Hovering
 
 
-func _on_control_mouse_exited():
+func _on_lettuce_mouse_exited():
 	if (CurrentState == State.Cutting):
 		FoodCut()
 	
@@ -128,7 +128,4 @@ func GetAllowedAngleDirectionVector() -> Vector2:
 	
 	return Output
 	
-
-
-
 

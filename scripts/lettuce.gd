@@ -8,8 +8,9 @@ func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			print("clicked")
+			pickup()
 			clicked.emit(self)
-			
+
 func _physics_process(delta):
 	if held:
 		global_transform.origin = get_global_mouse_position()
