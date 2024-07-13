@@ -10,3 +10,6 @@ script = ExtResource("1_ykv1v")
 
 [node name="lettuce" parent="." instance=ExtResource("1_t20bw")]
 position = Vector2(-34, -7)
+
+[node name="lettuce2" parent="." instance=ExtResource("1_t20bw")]
+position = Vector2(206, -7)

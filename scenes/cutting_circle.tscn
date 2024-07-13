@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1rskopmvo12w"]
+[gd_scene load_steps=3 format=3 uid="uid://csk0b1el7swhu"]
 
 [ext_resource type="Script" path="res://scripts/cutting_circle.gd" id="1_uq7pe"]
 [ext_resource type="Texture2D" uid="uid://cvhubrluxhn8j" path="res://assets/Cut Bar/cut_bar_0.png" id="2_v6dxg"]
@@ -7,18 +7,7 @@
 position = Vector2(295, 128)
 script = ExtResource("1_uq7pe")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -69.0
-offset_top = -74.0
-offset_right = -25.0
-offset_bottom = -30.0
-scale = Vector2(3.2, 3.2)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(3.2, 3.2)
 texture = ExtResource("2_v6dxg")
-
-[connection signal="mouse_entered" from="Control" to="." method="_on_control_mouse_entered"]
-[connection signal="mouse_exited" from="Control" to="." method="_on_control_mouse_exited"]
