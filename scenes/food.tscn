@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://b1rskopmvo12w" path="res://scenes/cutting_circle.tscn" id="1_fkdjj"]
 
-[node name="food" type="RigidBody2D"]
+[node name="food" type="Node2D"]
 position = Vector2(-296, -184)
 
 [node name="Cutting Circle" parent="." instance=ExtResource("1_fkdjj")]
-position = Vector2(569, 322)
+position = Vector2(860, 538)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

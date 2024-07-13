@@ -1,13 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1rskopmvo12w"]
+[gd_scene load_steps=4 format=3 uid="uid://b1rskopmvo12w"]
+
+[ext_resource type="Script" path="res://scripts/cutting_circle.gd" id="1_uq7pe"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7khkx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sb6yt"]
 radius = 65.6049
 
 [node name="Cutting Circle" type="RigidBody2D"]
 position = Vector2(279, 111)
+script = ExtResource("1_uq7pe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.5, -2.5)
+scale = Vector2(77, -79)
+texture = SubResource("PlaceholderTexture2D_7khkx")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_sb6yt")
+
+[connection signal="mouse_entered" from="Control" to="." method="_on_control_mouse_entered"]
+[connection signal="mouse_exited" from="Control" to="." method="_on_control_mouse_exited"]
