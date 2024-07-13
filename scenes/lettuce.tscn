@@ -1,13 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://cabvte76nlijl"]
+[gd_scene load_steps=6 format=3 uid="uid://c7svgv6eto85u"]
 
 [ext_resource type="PackedScene" uid="uid://b1rskopmvo12w" path="res://scenes/cutting_circle.tscn" id="1_fkdjj"]
+[ext_resource type="Script" path="res://scenes/lettuce.gd" id="1_laj43"]
 [ext_resource type="Texture2D" uid="uid://dmbmxthbj2tie" path="res://assets/Fruits and Vegetables/Lettuce.png" id="2_frmu4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_axfgg"]
 radius = 101.98
 
-[node name="lettuce" type="RigidBody2D"]
+[sub_resource type="GDScript" id="GDScript_65q4o"]
+script/source = "extends CollisionShape2D
+
+var draggable = false
+var is_dragging = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+"
+
+[node name="lettuce" type="RigidBody2D" groups=["pickable"]]
 position = Vector2(633, 302)
+input_pickable = true
+freeze_mode = 1
+script = ExtResource("1_laj43")
 
 [node name="Cutting Circle" parent="." instance=ExtResource("1_fkdjj")]
 position = Vector2(0, 0)
@@ -19,3 +40,9 @@ texture = ExtResource("2_frmu4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_axfgg")
+script = SubResource("GDScript_65q4o")
+
+[connection signal="clicked" from="." to="." method="_on_clicked"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="CollisionShape2D" method="_on_lettuce_mouse_entered"]
+[connection signal="mouse_exited" from="." to="CollisionShape2D" method="_on_lettuce_mouse_exited"]
