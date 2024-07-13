@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cabvte76nlijl"]
+[gd_scene load_steps=6 format=3 uid="uid://cabvte76nlijl"]
 
 [ext_resource type="PackedScene" uid="uid://b1rskopmvo12w" path="res://scenes/cutting_circle.tscn" id="1_fkdjj"]
 [ext_resource type="Script" path="res://scripts/lettuce.gd" id="1_laj43"]
@@ -27,6 +27,7 @@ func _process(delta):
 [node name="lettuce" type="RigidBody2D" groups=["pickable"]]
 position = Vector2(633, 302)
 input_pickable = true
+gravity_scale = 1.66533e-16
 freeze_mode = 1
 script = ExtResource("1_laj43")
 
