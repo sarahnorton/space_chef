@@ -10,7 +10,24 @@ var cut_bar_versions = {
 	"successful_cut" : preload("res://assets/Cut Bar/cut_cloud.png"),
 }
 
-# enum State = { "cutting" }
+#@export var 
+@export var AllowedCuttingAngles = [ 1, 10 ]
+@export var AllowedVariationOnCuttingAngle = 10
+@export var NumberOfCutsToNextState = 4
+
+
+signal ObjectCut()
+
+enum State
+{
+	Default,
+	Hovering,
+	Cutting,
+	Dragging,
+}
+
+var LocalInitialCutVector : Vector2
+var CurrentState : State = State.Default;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,13 +35,51 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _process(delta):
 	pass
 
 
 func _on_control_mouse_entered():
-	pass # Replace with function body.
+	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
+		LocalInitialCutVector = GetLocalPositionOfMouse()
+		CurrentState = State.Cutting
+	else:
+		CurrentState = State.Hovering
 
 
 func _on_control_mouse_exited():
-	pass # Replace with function body.
+	if (CurrentState == State.Cutting):
+		FoodCut()
+	
+	CurrentState = State.Default
+	
+	return
+
+
+func FoodCut():
+	var LocalFinalCutVector = GetLocalPositionOfMouse()
+	var DirectionVectorOfCut : Vector2 = (LocalInitialCutVector - LocalFinalCutVector).normalized()
+	var CutAngle = (180 / PI) * abs(asin(GetAllowedAngleDirectionVector().dot(DirectionVectorOfCut)))
+	print(CutAngle)
+	
+	ObjectCut.emit()
+
+
+func GetLocalPositionOfMouse() -> Vector2:
+	var MousePosition = get_viewport().get_mouse_position()
+	
+	return to_local(MousePosition)
+
+
+func GetAllowedAngleDirectionVector() -> Vector2:
+	var Output : Vector2 = Vector2(0, 1)
+	
+	Output.rotated(AllowedCuttingAngles[0])
+	
+	return Output
+	
+
+
+
+
