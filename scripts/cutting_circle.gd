@@ -38,7 +38,9 @@ enum CutState
 	Null = 5,
 }
 
-var IdealImageSize = 5 * 32
+const IdealImageSize = 5 * 32
+const IdealCuttingCircleSize = 3.2 * 64
+
 var NumberOfTimesCut = 0
 var LocalInitialCutVector : Vector2
 var CurrentState : State = State.Default
@@ -56,7 +58,7 @@ func _process(delta):
 
 
 func _on_control_mouse_entered():
-	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
+	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)):
 		LocalInitialCutVector = GetLocalPositionOfMouse()
 		CurrentState = State.Cutting
 	else:
@@ -80,23 +82,26 @@ func FoodCut():
 	CurrentCutState += 1
 	
 	if (CurrentCutState == CutState.Null):
-			DestroyObject()
-			return
+		DestroyObject()
+		return
 	
 	if (!FinalLayer()):
 		if (CurrentCutState == CutState.Completed):
-			CurrentCutState = CutState.Uncut
 			NumberOfTimesCut += 1
+			CurrentCutState = CutState.Uncut
+	
+	if (FinalLayer()):
+		CurrentCutState = CutState.Completed
 	
 	for Child in get_parent().get_children():
 				if Child is Sprite2D:
 					Child.texture = CutIngredients[NumberOfTimesCut]
-					Child.scale = Vector2(IdealImageSize, IdealImageSize) / CutIngredients[NumberOfTimesCut].get_size()
-					print(Child.scale)
+					Child.scale = Vector2(IdealImageSize, IdealImageSize) / Child.texture.get_size()
 	
 	for Child in get_children():
 			if Child is Sprite2D:
 				Child.texture = cut_bar_versions[CurrentCutState]
+				Child.scale = Vector2(IdealCuttingCircleSize, IdealCuttingCircleSize) / Child.texture.get_size()
 	
 	ObjectCut.emit()
 
