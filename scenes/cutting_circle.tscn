@@ -9,13 +9,19 @@ script = ExtResource("1_uq7pe")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 68.0
-offset_bottom = 70.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -80.0
+offset_right = 80.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-4, -13)
-scale = Vector2(0.8, 0.8)
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(3.2, 3.2)
 texture = ExtResource("2_v6dxg")
 
 [connection signal="mouse_entered" from="Control" to="." method="_on_control_mouse_entered"]
