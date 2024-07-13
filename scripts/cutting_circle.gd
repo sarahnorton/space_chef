@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Node2D
 
 # dictionary to store different assets
 var cut_bar_versions = {
