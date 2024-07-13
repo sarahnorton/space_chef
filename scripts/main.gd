@@ -14,11 +14,12 @@ func _on_pickable_clicked(object):
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if held_object and !event.pressed:
-			held_object.drop(Input.get_last_mouse_velocity())
-			held_object = null
+		if held_object != null:
+			if held_object and !event.pressed:
+				held_object.drop(Input.get_last_mouse_velocity())
+				held_object = null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 

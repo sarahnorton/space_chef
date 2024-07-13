@@ -39,4 +39,28 @@ func _process(delta):
 
 func _on_clicked():
 	pass # Replace with function body.
+var is_colliding = false
 
+func _on_body_entered(body):
+	print("body collided")
+	if body.is_in_group("pickable"):
+		is_colliding = true
+		if (body.is_colliding):
+			#var copied_node = body.duplicate()
+			#call_deferred()
+			#add_child(copied_node)
+			for child in body.get_children():
+				if child is Sprite2D:
+					child.reparent(self)
+					(child as Node2D).position = Vector2(0, 0)
+					(child as Node2D).rotation = 0
+					linear_velocity *= 0.1
+			
+			for group in body.get_groups():
+				add_to_group(group)
+			body.queue_free() # delete the node
+			#add_to_group("lettuce")
+			if is_in_group("tomato"):
+				print("tomato")
+			if is_in_group("lettuce"):
+				print("lettuce")

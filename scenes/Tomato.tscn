@@ -8,10 +8,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_axfgg"]
 radius = 101.98
 
-[node name="tomato" type="RigidBody2D" groups=["pickable"]]
+[node name="tomato" type="RigidBody2D" groups=["pickable", "tomato"]]
 position = Vector2(633, 302)
 input_pickable = true
 freeze_mode = 1
+max_contacts_reported = 10
+contact_monitor = true
 script = ExtResource("1_4xy1p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -30,6 +32,7 @@ position = Vector2(-1, -2)
 scale = Vector2(5, 5)
 texture = ExtResource("3_ah2ru")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="CollisionShape2D" method="_on_lettuce_mouse_entered"]
 [connection signal="mouse_entered" from="." to="Cutting Circle" method="_on_lettuce_mouse_entered"]
