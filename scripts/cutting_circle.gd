@@ -38,6 +38,7 @@ enum CutState
 	Null = 5,
 }
 
+var IdealImageSize = 5 * 32
 var NumberOfTimesCut = 0
 var LocalInitialCutVector : Vector2
 var CurrentState : State = State.Default
@@ -75,7 +76,7 @@ func FoodCut():
 	var LocalFinalCutVector = GetLocalPositionOfMouse()
 	var DirectionVectorOfCut : Vector2 = (LocalInitialCutVector - LocalFinalCutVector).normalized()
 	var CutAngle = (180 / PI) * abs(asin(GetAllowedAngleDirectionVector().dot(DirectionVectorOfCut)))
-	print(CutAngle)
+	#print(CutAngle)
 	CurrentCutState += 1
 	
 	if (CurrentCutState == CutState.Null):
@@ -90,6 +91,8 @@ func FoodCut():
 	for Child in get_parent().get_children():
 				if Child is Sprite2D:
 					Child.texture = CutIngredients[NumberOfTimesCut]
+					Child.scale = Vector2(IdealImageSize, IdealImageSize) / CutIngredients[NumberOfTimesCut].get_size()
+					print(Child.scale)
 	
 	for Child in get_children():
 			if Child is Sprite2D:
@@ -99,7 +102,7 @@ func FoodCut():
 
 
 func DestroyObject():
-	print("Destroying")
+	#print("Destroying")
 	get_parent().queue_free()
 
 
