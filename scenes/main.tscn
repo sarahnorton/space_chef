@@ -1,52 +1,140 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkc4ndfw4uhvu"]
+[gd_scene load_steps=15 format=3 uid="uid://bkc4ndfw4uhvu"]
 
-[ext_resource type="PackedScene" uid="uid://cabvte76nlijl" path="res://scenes/lettuce.tscn" id="1_t20bw"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ykv1v"]
-[ext_resource type="PackedScene" uid="uid://bhb5hm3j1jmla" path="res://scenes/Tomato.tscn" id="3_ireyq"]
 [ext_resource type="Script" path="res://scenes/chute.gd" id="4_ikp6u"]
+[ext_resource type="Script" path="res://scenes/SpawnController.gd" id="4_vpgw5"]
 [ext_resource type="Script" path="res://scenes/menu.gd" id="5_jkff7"]
+[ext_resource type="Texture2D" uid="uid://0svfskdn8ojc" path="res://assets/Bucket.png" id="5_nxg4k"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_iw768"]
-specular_color = Color(0.222023, 0.223162, 0.23795, 1)
-specular_shininess = 0.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wboao"]
+size = Vector2(2.25, 1078)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_857oo"]
-size = Vector2(970, 1434)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yssr1"]
+size = Vector2(1920, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ao4hi"]
+size = Vector2(305, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isoue"]
+size = Vector2(303, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbxse"]
+size = Vector2(8.5, 349)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6f4q"]
+size = Vector2(315.5, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fi3d"]
+size = Vector2(313.75, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsbw7"]
+size = Vector2(20, 349.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccxfl"]
+size = Vector2(341, 424)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_ykv1v")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="lettuce" parent="." instance=ExtResource("1_t20bw")]
-position = Vector2(-34, -7)
-gravity_scale = 1.66533e-16
+[node name="Invisible outer Border" type="StaticBody2D" parent="."]
+position = Vector2(90, 24)
 
-[node name="tomato" parent="." instance=ExtResource("3_ireyq")]
-position = Vector2(-301, -160)
-gravity_scale = 1.66533e-16
+[node name="Right" type="CollisionShape2D" parent="Invisible outer Border"]
+position = Vector2(869, -23)
+shape = SubResource("RectangleShape2D_wboao")
 
-[node name="Thrower" type="Node2D" parent="."]
+[node name="Top" type="CollisionShape2D" parent="Invisible outer Border"]
+position = Vector2(-90, -563)
+shape = SubResource("RectangleShape2D_yssr1")
 
-[node name="Background" type="Sprite2D" parent="."]
-show_behind_parent = true
-position = Vector2(20, -47.5)
-scale = Vector2(2196, 1489)
-texture = SubResource("CanvasTexture_iw768")
+[node name="Left" type="CollisionShape2D" parent="Invisible outer Border"]
+position = Vector2(-1049, -23)
+shape = SubResource("RectangleShape2D_wboao")
+
+[node name="SpawnController" type="Node2D" parent="."]
+script = ExtResource("4_vpgw5")
+
+[node name="SpawnPointA" type="Node2D" parent="SpawnController"]
+position = Vector2(-750, 575)
+
+[node name="SpawnBucketA" type="Node2D" parent="SpawnController"]
+
+[node name="Sprite2D" type="Sprite2D" parent="SpawnController/SpawnBucketA"]
+position = Vector2(722, -293)
+scale = Vector2(0.406111, 0.574444)
+texture = ExtResource("5_nxg4k")
+flip_h = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="SpawnController/SpawnBucketA"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnController/SpawnBucketA/StaticBody2D"]
+position = Vector2(-809.5, -516.5)
+shape = SubResource("RectangleShape2D_ao4hi")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SpawnController/SpawnBucketA/StaticBody2D"]
+position = Vector2(-806.5, -143.5)
+shape = SubResource("RectangleShape2D_isoue")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="SpawnController/SpawnBucketA/StaticBody2D"]
+position = Vector2(-676, -319)
+shape = SubResource("RectangleShape2D_dbxse")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SpawnController/SpawnBucketA"]
+offset_left = -935.0
+offset_top = -436.0
+offset_right = -783.0
+offset_bottom = -222.0
+
+[node name="SpawnBucketB" type="Node2D" parent="SpawnController"]
+position = Vector2(-764, -230)
+
+[node name="Sprite2D" type="Sprite2D" parent="SpawnController/SpawnBucketB"]
+position = Vector2(32.3333, -68)
+scale = Vector2(0.406111, 0.574444)
+texture = ExtResource("5_nxg4k")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="SpawnController/SpawnBucketB"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnController/SpawnBucketB/StaticBody2D"]
+position = Vector2(1565.25, -282)
+shape = SubResource("RectangleShape2D_p6f4q")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SpawnController/SpawnBucketB/StaticBody2D"]
+position = Vector2(1565.13, 92)
+shape = SubResource("RectangleShape2D_7fi3d")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="SpawnController/SpawnBucketB/StaticBody2D"]
+position = Vector2(1435, -81.25)
+shape = SubResource("RectangleShape2D_jsbw7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SpawnController/SpawnBucketB"]
+offset_left = 1537.0
+offset_top = -203.0
+offset_right = 1690.0
+offset_bottom = 13.0
+
+[node name="SpawnPointB" type="Node2D" parent="SpawnController"]
+position = Vector2(0, 575)
+
+[node name="SpawnPointC" type="Node2D" parent="SpawnController"]
+position = Vector2(750, 575)
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("4_ikp6u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1052, 82)
-shape = SubResource("RectangleShape2D_857oo")
+visibility_layer = 2
+position = Vector2(801.5, -337)
+shape = SubResource("RectangleShape2D_ccxfl")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-position = Vector2(500, 0)
+position = Vector2(-100, -450)
+scale = Vector2(5, 5)
 script = ExtResource("5_jkff7")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Area2D"]
-position = Vector2(700, 0)
+position = Vector2(100, -450)
+scale = Vector2(5, 5)
 script = ExtResource("5_jkff7")
-
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
