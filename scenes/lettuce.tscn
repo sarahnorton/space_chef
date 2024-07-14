@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cabvte76nlijl"]
+[gd_scene load_steps=6 format=3 uid="uid://cabvte76nlijl"]
 
 [ext_resource type="PackedScene" uid="uid://b1rskopmvo12w" path="res://scenes/cutting_circle.tscn" id="1_fkdjj"]
 [ext_resource type="Script" path="res://scripts/lettuce.gd" id="1_laj43"]
+[ext_resource type="Script" path="res://scripts/Spinner.gd" id="2_3nghv"]
 [ext_resource type="Texture2D" uid="uid://dmbmxthbj2tie" path="res://assets/Fruits and Vegetables/Lettuce.png" id="2_frmu4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_axfgg"]
@@ -19,19 +20,22 @@ script = ExtResource("1_laj43")
 shape = SubResource("CircleShape2D_axfgg")
 debug_color = Color(0.466667, 0.443137, 1, 0.419608)
 
-[node name="Cutting Circle" parent="." instance=ExtResource("1_fkdjj")]
-position = Vector2(0, 0)
+[node name="Spinner" type="Node2D" parent="."]
+script = ExtResource("2_3nghv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="Spinner"]
 position = Vector2(-1, -2)
 scale = Vector2(5, 5)
 texture = ExtResource("2_frmu4")
 
+[node name="Cutting Circle" parent="Spinner" instance=ExtResource("1_fkdjj")]
+position = Vector2(0, 0)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="CollisionShape2D" method="_on_lettuce_mouse_entered"]
-[connection signal="mouse_entered" from="." to="Cutting Circle" method="_on_lettuce_mouse_entered"]
+[connection signal="mouse_entered" from="." to="Spinner/Cutting Circle" method="_on_lettuce_mouse_entered"]
 [connection signal="mouse_exited" from="." to="CollisionShape2D" method="_on_lettuce_mouse_exited"]
-[connection signal="mouse_exited" from="." to="Cutting Circle" method="_on_lettuce_mouse_exited"]
+[connection signal="mouse_exited" from="." to="Spinner/Cutting Circle" method="_on_lettuce_mouse_exited"]
 
-[editable path="Cutting Circle"]
+[editable path="Spinner/Cutting Circle"]

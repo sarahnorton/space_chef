@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://du1wir12m4fxc"]
+[gd_scene load_steps=7 format=3 uid="uid://du1wir12m4fxc"]
 
 [ext_resource type="Script" path="res://scripts/lettuce.gd" id="1_4xy1p"]
+[ext_resource type="Script" path="res://scenes/Spinner.gd" id="2_2oo0c"]
 [ext_resource type="PackedScene" uid="uid://b1rskopmvo12w" path="res://scenes/cutting_circle.tscn" id="2_a1pai"]
 [ext_resource type="Texture2D" uid="uid://dtwioi7vlytxi" path="res://assets/Fruits and Vegetables/Tomato.png" id="3_ah2ru"]
 [ext_resource type="Texture2D" uid="uid://jyovkqh5susv" path="res://assets/Cut Food/cut_tomato.png" id="4_4dyba"]
@@ -20,14 +21,17 @@ script = ExtResource("1_4xy1p")
 shape = SubResource("CircleShape2D_axfgg")
 debug_color = Color(0.466667, 0.443137, 1, 0.419608)
 
-[node name="Cutting Circle" parent="." instance=ExtResource("2_a1pai")]
+[node name="Spinner" type="Node2D" parent="."]
+script = ExtResource("2_2oo0c")
+
+[node name="Cutting Circle" parent="Spinner" instance=ExtResource("2_a1pai")]
 position = Vector2(0, 0)
 CutIngredients = {
 0: ExtResource("3_ah2ru"),
 1: ExtResource("4_4dyba")
 }
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="Spinner"]
 position = Vector2(-1, -2)
 scale = Vector2(5, 5)
 texture = ExtResource("3_ah2ru")
@@ -35,8 +39,8 @@ texture = ExtResource("3_ah2ru")
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="CollisionShape2D" method="_on_lettuce_mouse_entered"]
-[connection signal="mouse_entered" from="." to="Cutting Circle" method="_on_lettuce_mouse_entered"]
+[connection signal="mouse_entered" from="." to="Spinner/Cutting Circle" method="_on_lettuce_mouse_entered"]
 [connection signal="mouse_exited" from="." to="CollisionShape2D" method="_on_lettuce_mouse_exited"]
-[connection signal="mouse_exited" from="." to="Cutting Circle" method="_on_lettuce_mouse_exited"]
+[connection signal="mouse_exited" from="." to="Spinner/Cutting Circle" method="_on_lettuce_mouse_exited"]
 
-[editable path="Cutting Circle"]
+[editable path="Spinner/Cutting Circle"]
