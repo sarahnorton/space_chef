@@ -11,6 +11,10 @@ script = ExtResource("1_ykv1v")
 
 [node name="lettuce" parent="." instance=ExtResource("1_t20bw")]
 position = Vector2(-34, -7)
+gravity_scale = 1.66533e-16
 
 [node name="tomato" parent="." instance=ExtResource("3_ireyq")]
 position = Vector2(-301, -160)
+gravity_scale = 1.66533e-16
+
+[node name="Thrower" type="Node2D" parent="."]

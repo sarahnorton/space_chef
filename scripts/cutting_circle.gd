@@ -41,6 +41,22 @@ enum CutState
 const IdealImageSize = 5 * 32
 const IdealCuttingCircleSize = 3.2 * 64
 
+var IngredientTotal = 1
+var CutTotal = 0
+
+func ObjectCollided(body : Node2D):
+	IngredientTotal += body.IngredientTotal
+	CutTotal += body.CutTotal
+	
+	
+	NumberOfTimesCut = len(CutIngredients) - 1
+	CurrentCutState = CutState.Completed
+	
+	for Child in get_children():
+			if Child is Sprite2D:
+				Child.texture = cut_bar_versions[CurrentCutState]
+				Child.scale = Vector2(IdealCuttingCircleSize, IdealCuttingCircleSize) / Child.texture.get_size()
+
 var NumberOfTimesCut = 0
 var LocalInitialCutVector : Vector2
 var CurrentState : State = State.Default
@@ -81,8 +97,8 @@ func FoodCut():
 	
 	if (!FinalLayer()):
 		if (CutAngle > AllowedVariationOnCuttingAngle):
-			return
 			print("Failed cut")
+			return
 	
 	CurrentCutState += 1
 	
@@ -96,6 +112,7 @@ func FoodCut():
 			CurrentCutState = CutState.Uncut
 	
 	if (FinalLayer()):
+		CutTotal += 1
 		CurrentCutState = CutState.Completed
 	
 	for Child in get_parent().get_children():

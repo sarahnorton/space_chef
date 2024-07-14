@@ -32,6 +32,7 @@ position = Vector2(-1, -2)
 scale = Vector2(5, 5)
 texture = ExtResource("3_ah2ru")
 
+[connection signal="Collided" from="." to="Cutting Circle" method="ObjectCollided"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="CollisionShape2D" method="_on_lettuce_mouse_entered"]

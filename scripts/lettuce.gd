@@ -2,6 +2,8 @@ extends RigidBody2D
 
 signal clicked
 
+signal Collided(body : Node2D)
+
 var held = false
 
 func _on_input_event(viewport, event, shape_idx):
@@ -42,13 +44,11 @@ func _on_clicked():
 var is_colliding = false
 
 func _on_body_entered(body):
-	print("body collided")
 	if body.is_in_group("pickable"):
 		is_colliding = true
 		if (body.is_colliding):
-			#var copied_node = body.duplicate()
-			#call_deferred()
-			#add_child(copied_node)
+			Collided.emit(get_node("Cutting Circle"))
+			
 			for child in body.get_children():
 				if child is Sprite2D:
 					child.reparent(self)
@@ -59,8 +59,4 @@ func _on_body_entered(body):
 			for group in body.get_groups():
 				add_to_group(group)
 			body.queue_free() # delete the node
-			#add_to_group("lettuce")
-			if is_in_group("tomato"):
-				print("tomato")
-			if is_in_group("lettuce"):
-				print("lettuce")
+
