@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkc4ndfw4uhvu"]
+[gd_scene load_steps=6 format=3 uid="uid://bkc4ndfw4uhvu"]
 
 [ext_resource type="PackedScene" uid="uid://cabvte76nlijl" path="res://scenes/lettuce.tscn" id="1_t20bw"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ykv1v"]
 [ext_resource type="PackedScene" uid="uid://dbp7a2wwhxj8p" path="res://scenes/Tomato.tscn" id="3_ireyq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wboao"]
+size = Vector2(2.25, 646)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yssr1"]
+size = Vector2(1152, 2)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_ykv1v")
@@ -14,3 +20,18 @@ position = Vector2(-34, -7)
 
 [node name="tomato" parent="." instance=ExtResource("3_ireyq")]
 position = Vector2(-301, -160)
+
+[node name="Invisible outer Border" type="StaticBody2D" parent="."]
+position = Vector2(90, 24)
+
+[node name="Right" type="CollisionShape2D" parent="Invisible outer Border"]
+position = Vector2(484.75, -23)
+shape = SubResource("RectangleShape2D_wboao")
+
+[node name="Top" type="CollisionShape2D" parent="Invisible outer Border"]
+position = Vector2(-90, -347)
+shape = SubResource("RectangleShape2D_yssr1")
+
+[node name="Left" type="CollisionShape2D" parent="Invisible outer Border"]
+position = Vector2(-664.875, -23)
+shape = SubResource("RectangleShape2D_wboao")
