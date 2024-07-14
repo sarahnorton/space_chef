@@ -12,6 +12,8 @@ func _on_input_event(viewport, event, shape_idx):
 			print("clicked")
 			pickup()
 			clicked.emit(self)
+		if !event.pressed:
+			drop()
 
 func _physics_process(delta):
 	if held:
