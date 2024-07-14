@@ -8,7 +8,7 @@
 radius = 101.98
 
 [node name="lettuce" type="RigidBody2D" groups=["lettuce", "pickable"]]
-position = Vector2(633, 302)
+position = Vector2(18, 1)
 input_pickable = true
 freeze_mode = 1
 max_contacts_reported = 10

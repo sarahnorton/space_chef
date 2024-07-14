@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbp7a2wwhxj8p"]
+[gd_scene load_steps=6 format=3 uid="uid://du1wir12m4fxc"]
 
 [ext_resource type="Script" path="res://scripts/lettuce.gd" id="1_4xy1p"]
 [ext_resource type="PackedScene" uid="uid://b1rskopmvo12w" path="res://scenes/cutting_circle.tscn" id="2_a1pai"]
@@ -9,7 +9,7 @@
 radius = 101.98
 
 [node name="tomato" type="RigidBody2D" groups=["pickable", "tomato"]]
-position = Vector2(633, 302)
+position = Vector2(0, -1)
 input_pickable = true
 freeze_mode = 1
 max_contacts_reported = 10

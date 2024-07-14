@@ -29,8 +29,13 @@ func drop(impulse=Vector2.ZERO):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	position.y += 825
+	gravity_scale = -5.8
+	var impulse = Vector2(0, 1000)
+	apply_impulse(Vector2.ZERO, impulse)
+	
+	await get_tree().create_timer(.6).timeout
+	gravity_scale = 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -2,9 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://cabvte76nlijl" path="res://scenes/lettuce.tscn" id="1_t20bw"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ykv1v"]
-[ext_resource type="PackedScene" uid="uid://dbp7a2wwhxj8p" path="res://scenes/Tomato.tscn" id="3_ireyq"]
+[ext_resource type="PackedScene" uid="uid://du1wir12m4fxc" path="res://scenes/Tomato.tscn" id="3_ireyq"]
 
 [node name="main" type="Node2D"]
+position = Vector2(574, 324)
 script = ExtResource("1_ykv1v")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -13,4 +14,4 @@ script = ExtResource("1_ykv1v")
 position = Vector2(-34, -7)
 
 [node name="tomato" parent="." instance=ExtResource("3_ireyq")]
-position = Vector2(-301, -160)
+position = Vector2(-382, -7)

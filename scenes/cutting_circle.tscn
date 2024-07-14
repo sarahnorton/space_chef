@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cvhubrluxhn8j" path="res://assets/Cut Bar/cut_bar_0.png" id="2_v6dxg"]
 
 [node name="Cutting Circle" type="Node2D"]
-position = Vector2(295, 128)
+position = Vector2(9, -4)
 script = ExtResource("1_uq7pe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
