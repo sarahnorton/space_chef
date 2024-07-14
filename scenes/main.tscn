@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkc4ndfw4uhvu"]
+[gd_scene load_steps=8 format=3 uid="uid://bkc4ndfw4uhvu"]
 
 [ext_resource type="PackedScene" uid="uid://cabvte76nlijl" path="res://scenes/lettuce.tscn" id="1_t20bw"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ykv1v"]
-[ext_resource type="PackedScene" uid="uid://dbp7a2wwhxj8p" path="res://scenes/Tomato.tscn" id="3_ireyq"]
+[ext_resource type="PackedScene" uid="uid://bhb5hm3j1jmla" path="res://scenes/Tomato.tscn" id="3_ireyq"]
+[ext_resource type="Script" path="res://scenes/chute.gd" id="4_ikp6u"]
+[ext_resource type="Script" path="res://scenes/menu.gd" id="5_jkff7"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_iw768"]
 specular_color = Color(0.222023, 0.223162, 0.23795, 1)
 specular_shininess = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_857oo"]
+size = Vector2(970, 1434)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_ykv1v")
@@ -28,3 +33,20 @@ show_behind_parent = true
 position = Vector2(20, -47.5)
 scale = Vector2(2196, 1489)
 texture = SubResource("CanvasTexture_iw768")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("4_ikp6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1052, 82)
+shape = SubResource("RectangleShape2D_857oo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(500, 0)
+script = ExtResource("5_jkff7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Area2D"]
+position = Vector2(700, 0)
+script = ExtResource("5_jkff7")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

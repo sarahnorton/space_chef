@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbp7a2wwhxj8p"]
+[gd_scene load_steps=6 format=3 uid="uid://bhb5hm3j1jmla"]
 
 [ext_resource type="Script" path="res://scripts/lettuce.gd" id="1_4xy1p"]
 [ext_resource type="PackedScene" uid="uid://b1rskopmvo12w" path="res://scenes/cutting_circle.tscn" id="2_a1pai"]
 [ext_resource type="Texture2D" uid="uid://dtwioi7vlytxi" path="res://assets/Fruits and Vegetables/Tomato.png" id="3_ah2ru"]
-[ext_resource type="Texture2D" uid="uid://jyovkqh5susv" path="res://assets/Cut Food/cut_tomato.png" id="4_4dyba"]
+[ext_resource type="Texture2D" path="res://assets/Cut Food/cut_tomato.png" id="4_4dyba"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_axfgg"]
 radius = 101.98

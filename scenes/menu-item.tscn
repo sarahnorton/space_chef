@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ku6nt5033b0k"]
+
+[ext_resource type="Texture2D" uid="uid://dtwioi7vlytxi" path="res://assets/Fruits and Vegetables/Tomato.png" id="1_up182"]
+[ext_resource type="Texture2D" uid="uid://dmbmxthbj2tie" path="res://assets/Fruits and Vegetables/Lettuce.png" id="2_nsjyj"]
+[ext_resource type="Texture2D" uid="uid://b0yhkc22vubhn" path="res://assets/Fruits and Vegetables/Carrot.png" id="3_vudkc"]
+
+[node name="menu item" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Tomato" type="Sprite2D" parent="."]
+position = Vector2(926, -94)
+scale = Vector2(10.7188, 10.8438)
+texture = ExtResource("1_up182")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1251, -95)
+scale = Vector2(10.1406, 10.3906)
+texture = ExtResource("2_nsjyj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1035, 138)
+scale = Vector2(10.1406, 10.3906)
+texture = ExtResource("3_vudkc")
