@@ -44,7 +44,7 @@ func _on_clicked():
 var is_colliding = false
 
 func _on_body_entered(body):
-	if body.is_in_group("pickable"):
+	if body.is_in_group("pickable") and body.get_node("Cutting Circle").CurrentCutState == 4:
 		is_colliding = true
 		if (body.is_colliding):
 			Collided.emit(get_node("Cutting Circle"))
