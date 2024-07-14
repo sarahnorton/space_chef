@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://dbp7a2wwhxj8p" path="res://scenes/Tomato.tscn" id="3_ireyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wboao"]
-size = Vector2(2.25, 646)
+size = Vector2(2.25, 1078)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yssr1"]
-size = Vector2(1152, 2)
+size = Vector2(1920, 2)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_ykv1v")
@@ -25,13 +25,29 @@ position = Vector2(-301, -160)
 position = Vector2(90, 24)
 
 [node name="Right" type="CollisionShape2D" parent="Invisible outer Border"]
-position = Vector2(484.75, -23)
+position = Vector2(869, -23)
 shape = SubResource("RectangleShape2D_wboao")
 
 [node name="Top" type="CollisionShape2D" parent="Invisible outer Border"]
-position = Vector2(-90, -347)
+position = Vector2(-90, -563)
 shape = SubResource("RectangleShape2D_yssr1")
 
 [node name="Left" type="CollisionShape2D" parent="Invisible outer Border"]
-position = Vector2(-664.875, -23)
+position = Vector2(-1049, -23)
 shape = SubResource("RectangleShape2D_wboao")
+
+[node name="SpawnController" type="Node2D" parent="."]
+
+[node name="SpawnPointA" type="Node2D" parent="SpawnController"]
+
+[node name="SpawnBucketA" type="Node2D" parent="SpawnController"]
+
+[node name="Sprite2D" type="Sprite2D" parent="SpawnController/SpawnBucketA"]
+
+[node name="SpawnBucketB" type="Node2D" parent="SpawnController"]
+
+[node name="Sprite2D" type="Sprite2D" parent="SpawnController/SpawnBucketB"]
+
+[node name="SpawnPointB" type="Node2D" parent="SpawnController"]
+
+[node name="SpawnPointC" type="Node2D" parent="SpawnController"]
